@@ -2,13 +2,14 @@
 import CustomForm from "@/components/Form/CustomForm";
 import CustomInput from "@/components/Form/CustomInput";
 import { loginSchema } from "@/schema/login.schema";
-import Container from "@/utils/Container/Container";
+import Container from "@/components/Shared/Container/Container";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues } from "react-hook-form";
 import Link from "next/link";
 import { loginUser } from "@/action/auth/loginUser";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { setToLocalStorage } from "@/utils/localStorage/localStorage";
 const Login = () => {
   const router = useRouter();
   const submit = async (data: FieldValues) => {
@@ -17,7 +18,7 @@ const Login = () => {
       toast.error(result?.message);
     }
     if (result?.success && result?.data) {
-      localStorage.setItem("accessToken", result?.data?.accessToken);
+      setToLocalStorage("accessToken", result?.data?.accessToken);
       toast.success(result?.message);
       router.push("/my-account");
     }

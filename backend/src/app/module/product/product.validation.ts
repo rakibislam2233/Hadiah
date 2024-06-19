@@ -33,13 +33,6 @@ const createProductSchema = z.object({
         required_error: 'Price is required',
       })
       .positive('Price must be a positive number'),
-    rating: z
-      .number({
-        invalid_type_error: 'Rating must be a number',
-        required_error: 'Rating is required',
-      })
-      .min(0, 'Rating must be at least 0')
-      .max(5, 'Rating can be at most 5'),
     description: z
       .string({
         invalid_type_error: 'Description must be a string',
@@ -87,14 +80,6 @@ const updateProductSchema = z.object({
         required_error: 'Price is required',
       })
       .positive('Price must be a positive number')
-      .optional(),
-    rating: z
-      .number({
-        invalid_type_error: 'Rating must be a number',
-        required_error: 'Rating is required',
-      })
-      .min(0, 'Rating must be at least 0')
-      .max(5, 'Rating can be at most 5')
       .optional(),
     description: z
       .string({

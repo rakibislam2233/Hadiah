@@ -3,7 +3,7 @@ import { z } from 'zod';
 const createCategoriesSchema = z.object({
   body: z.object({
     name: z.string().min(1, { message: 'Name is required' }),
-    image: z.string().min(1, { message: 'Image is required' }),
+    image: z.string().min(1, { message: 'Image is required' }).optional(),
     status: z.string().min(1, { message: 'Status is required' }).optional(),
   }),
 });

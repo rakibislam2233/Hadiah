@@ -3,7 +3,7 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { PiShoppingCartSimple } from "react-icons/pi";
 import { CiUser } from "react-icons/ci";
 import Link from "next/link";
-import Container from "../../../utils/Container/Container";
+import Container from "../Container/Container";
 import { IoSearch } from "react-icons/io5";
 import loggedUser from "@/utils/loggedUser/loggedUser";
 const Navbar = () => {

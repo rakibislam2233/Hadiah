@@ -1,4 +1,4 @@
-import Container from "@/utils/Container/Container";
+import Container from "@/components/Shared/Container/Container";
 import Link from "next/link";
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";

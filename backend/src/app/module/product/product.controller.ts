@@ -6,8 +6,8 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 
 const createProduct = catchAsync(async (req, res, next) => {
-  const { productData } = req.body;
-  const result = await productService.createProduct(productData);
+  const productData = req.body;
+  const result = await productService.createProduct(req.files, productData);
   sendResponse(res, {
     success: true,
     statusCode: httpStatus.OK,
@@ -37,8 +37,35 @@ const getSingleProduct = catchAsync(async (req, res, next) => {
   });
 });
 
+const updateProduct = catchAsync(async (req, res, next) => {
+  const { productId } = req.params;
+  const productData = req.body;
+  const result = await productService.updateProduct(
+    productId,
+    req.files,
+    productData,
+  );
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Product update successfully',
+    data: result,
+  });
+});
+const deleteProduct = catchAsync(async (req, res, next) => {
+  const { productId } = req.params;
+  const result = await productService.deleteProduct(productId);
+  sendResponse(res, {
+    success: true,
+    statusCode: httpStatus.OK,
+    message: 'Product delete successfully',
+    data: result,
+  });
+});
 export const productController = {
   createProduct,
   getAllProducts,
   getSingleProduct,
+  updateProduct,
+  deleteProduct,
 };

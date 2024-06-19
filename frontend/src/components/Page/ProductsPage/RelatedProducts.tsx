@@ -2,7 +2,7 @@ import { TProduct } from "@/types";
 import ProductCard from "../HomePage/ProductCard";
 import styles from "./RelatedProduct.module.css";
 const RelatedProducts = async () => {
-  const res = await fetch("http://localhost:8000/api/v1/products", {
+  const res = await fetch("https://hadiah-theta.vercel.app/api/v1/products", {
     cache: "no-store",
   });
   const products = await res.json();

@@ -2,7 +2,7 @@ import SectionTitle from "@/components/Shared/SectionTitle/SectionTitle";
 import { TProduct } from "@/types";
 import ProductCard from "../ProductCard";
 const Popular = async () => {
-  const res = await fetch("http://localhost:8000/api/v1/products", {
+  const res = await fetch("https://hadiah-theta.vercel.app/api/v1/products", {
     cache: "no-cache",
   });
   const datas = await res.json();

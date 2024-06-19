@@ -6,8 +6,11 @@ import catchAsync from '../../utils/catchAsync';
 import sendResponse from '../../utils/sendResponse';
 
 const createCategories = catchAsync(async (req, res, next) => {
-  const { categoryData } = req.body;
-  const result = await categoriesService.createCategories(categoryData);
+  const categoryData = req.body;
+  const result = await categoriesService.createCategories(
+    req.file,
+    categoryData,
+  );
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
@@ -26,16 +29,6 @@ const getAllCategories = catchAsync(async (req, res, next) => {
   });
 });
 
-const getSingleCategory = catchAsync(async (req, res, next) => {
-  const { categoryId } = req.params;
-  const result = await categoriesService.getSingleCategories(categoryId);
-  sendResponse(res, {
-    statusCode: httpStatus.OK,
-    success: true,
-    message: 'Single Category retrieves successfully',
-    data: result,
-  });
-});
 
 const updateCategories = catchAsync(async (req, res, next) => {
   const { categoryId } = req.params;
@@ -66,7 +59,6 @@ const deleteCategories = catchAsync(async (req, res, next) => {
 export const categoriesController = {
   createCategories,
   getAllCategories,
-  getSingleCategory,
   updateCategories,
   deleteCategories,
 };

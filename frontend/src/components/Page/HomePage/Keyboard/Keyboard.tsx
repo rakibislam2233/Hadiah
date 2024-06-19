@@ -3,7 +3,7 @@ import Carasoul from "@/components/Shared/Carasoul/Carasoul";
 import keyboardBanner from '@/assest/Banner/keyboardBanner.jpg'
 import { TProduct } from "@/types";
 const Keyboard = async () => {
-  const res = await fetch("http://localhost:8000/api/v1/products", {
+  const res = await fetch("https://hadiah-theta.vercel.app/api/v1/products", {
     cache: "no-store",
   });
   const products = await res.json();

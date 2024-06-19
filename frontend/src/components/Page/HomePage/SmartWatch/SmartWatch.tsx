@@ -3,7 +3,7 @@ import smartWatchImage from "@/assest/Banner/smartWatchBanner.png";
 import { TProduct } from "@/types";
 import ProductCard from "../ProductCard";
 const SmartWatch = async () => {
-  const res = await fetch("http://localhost:8000/api/v1/products", {
+  const res = await fetch("https://hadiah-theta.vercel.app/api/v1/products", {
     cache: "no-store",
   });
   const products = await res.json();

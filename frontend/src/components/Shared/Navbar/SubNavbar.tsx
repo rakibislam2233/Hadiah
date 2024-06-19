@@ -1,8 +1,8 @@
-import Container from "../../../utils/Container/Container";
+import Container from "../Container/Container";
 import CategoryDropDown from "./CategoryDropDown";
 
 const SubNavbar = async () => {
-  const res = await fetch("http://localhost:8000/api/v1/categories", {
+  const res = await fetch("https://hadiah-theta.vercel.app/api/v1/categories", {
     cache: "no-store",
   });
   const categories = await res.json();

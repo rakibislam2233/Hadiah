@@ -1,7 +1,7 @@
 "use client";
 import CustomForm from "@/components/Form/CustomForm";
 import CustomInput from "@/components/Form/CustomInput";
-import Container from "@/utils/Container/Container";
+import Container from "@/components/Shared/Container/Container";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues } from "react-hook-form";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import { registerSchema } from "@/schema/register.schema";
 import { registerUser } from "@/action/auth/registerUser";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import { setToLocalStorage } from "@/utils/localStorage/localStorage";
 
 const Register = () => {
   const router = useRouter();
@@ -18,7 +19,7 @@ const Register = () => {
       toast.error(result?.message);
     }
     if (result?.success && result?.data) {
-      localStorage.setItem("accessToken", result?.data?.accessToken);
+      setToLocalStorage("accessToken", result?.data?.accessToken);
       toast.success(result?.message);
       router.push("/my-account");
     }
