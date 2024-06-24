@@ -8,7 +8,6 @@ const FlashSale = async () => {
     cache: "no-store",
   });
   const flashSaleProduct = await res.json();
-
   return (
     <div className="w-full mt-16">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-5">

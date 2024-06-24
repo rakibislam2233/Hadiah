@@ -6,7 +6,7 @@ const MyAccountLayout = ({ children }: { children: ReactNode }) => {
   return (
     <>
       <Container className="w-full flex gap-5 px-3 my-5">
-        <Sidebar />
+        <Sidebar/>
         <div className="w-[75%] bg-white rounded p-5">{children}</div>
       </Container>
     </>

@@ -5,11 +5,15 @@ import { CiUser } from "react-icons/ci";
 import Link from "next/link";
 import Container from "../Container/Container";
 import { IoSearch } from "react-icons/io5";
-import loggedUser from "@/utils/loggedUser/loggedUser";
+import useCart from "@/hooks/useCart";
 const Navbar = () => {
-  const user = loggedUser();
+  const cartProducts = useCart();
+  const totalQuantity = cartProducts.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
   return (
-    <nav className="bg-[#17273B] text-white">
+    <nav className="bg-[#17273B]">
       <Container className="w-full h-20 flex justify-between items-center gap-20 px-3  ">
         <Link href={"/"}>
           <div className={`flex text-3xl font-bold text-white`}>
@@ -23,7 +27,7 @@ const Navbar = () => {
         </Link>
         <form className="w-full flex justify-between items-center">
           <input
-            className="w-full px-2 bg-white py-[9px] rounded-l-lg outline-none border-l border-y "
+            className="w-full px-2 rounded-l-xl  py-[9px]  outline-none  border-y "
             type="text"
             name="search"
             id="search"
@@ -33,16 +37,20 @@ const Navbar = () => {
             <IoSearch className="text-white" />
           </button>
         </form>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4 text-white">
           <Link href={"/login"}>
             <IoMdHeartEmpty className="w-7 h-7" />
           </Link>
-          <Link href={"/login"}>
+          <Link className="relative" href={"/cart"}>
             <PiShoppingCartSimple className="w-7 h-7 " />
+            <span className="absolute -top-3 -right-2 size-4 rounded-full bg-[#105CAA] text-white flex justify-center items-center text-xs">{totalQuantity}</span>
           </Link>
-          <Link href={`${user ? "/my-account" : "/login"}`}>
+          <Link href={"/login"}>
             <CiUser className="w-7 h-7" />
           </Link>
+          {/* <Link href={`${user ? "/my-account" : "/login"}`}>
+            <CiUser className="w-7 h-7" />
+          </Link> */}
         </div>
       </Container>
     </nav>

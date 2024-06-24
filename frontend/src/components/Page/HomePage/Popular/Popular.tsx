@@ -13,7 +13,7 @@ const Popular = async () => {
       data.category !== "Mobile"
   );
   return (
-    <div className="w-full mt-16">
+    <div className="w-full mt-16 mb-5">
       <SectionTitle title="Most popular products" path="/" />
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-x-1 gap-y-5">
         {popularProducts?.slice(0, 10)?.map((product: TProduct) => (

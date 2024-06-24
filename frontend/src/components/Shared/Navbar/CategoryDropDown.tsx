@@ -7,6 +7,7 @@ import { useState } from "react";
 import { HiBars3BottomLeft } from "react-icons/hi2";
 
 const CategoryDropDown = ({ categories }: { categories: any }) => {
+  console.log(categories)
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div className="w-full max-w-[220px] relative">

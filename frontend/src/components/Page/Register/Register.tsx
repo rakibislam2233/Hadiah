@@ -10,6 +10,9 @@ import { registerUser } from "@/action/auth/registerUser";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { setToLocalStorage } from "@/utils/localStorage/localStorage";
+import { signIn } from "next-auth/react";
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 const Register = () => {
   const router = useRouter();
@@ -21,7 +24,7 @@ const Register = () => {
     if (result?.success && result?.data) {
       setToLocalStorage("accessToken", result?.data?.accessToken);
       toast.success(result?.message);
-      router.push("/my-account");
+      router.push("/");
     }
   };
   return (

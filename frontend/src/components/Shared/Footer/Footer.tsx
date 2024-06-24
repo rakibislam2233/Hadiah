@@ -7,7 +7,7 @@ import { MdOutlineMail, MdPhone } from "react-icons/md";
 const Footer = () => {
   return (
     <div className="bg-[#17273B] text-white">
-      <Container className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-5 px-3 py-5  mt-10">
+      <Container className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-5 px-3 py-5  pt-10">
         <div className="space-y-3">
           <Link href={"/"}>
             <div className={`flex text-3xl font-bold text-white`}>

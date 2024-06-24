@@ -1,7 +1,7 @@
 "use server";
 export const loginUser = async (payload: any) => {
   try {
-    const res = await fetch(`${process.env.BACKEND_URL}/api/v1/auth/login`, {
+    const res = await fetch(`https://hadiah-theta.vercel.app/api/v1/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

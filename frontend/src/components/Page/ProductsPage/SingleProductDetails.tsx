@@ -6,9 +6,22 @@ import { PiShoppingCartSimple } from "react-icons/pi";
 import { FiMinus, FiPlus } from "react-icons/fi";
 import { useState } from "react";
 import { TProduct } from "@/types";
+import { useAppDispatch } from "@/redux/hook/hook";
+import { addToCart } from "@/redux/fetures/cart/cartSlice";
 
 const SingleProductDetails = ({ product }: { product: TProduct }) => {
-  const [quantity, setQuantity] = useState<number>(0);
+  const [quantity, setQuantity] = useState<number>(1);
+  const dispatch = useAppDispatch()
+  const handleDispatch = () => {
+    dispatch(addToCart({
+      id:product._id,
+      title:product.title,
+      image:product.images[0],
+      price:product.price,
+      quantity:quantity
+    }))
+    setQuantity(1)
+  }
   return (
     <div className="space-y-3.5 pb-4">
       <h1 className="text-2xl">{product.title}</h1>
@@ -31,7 +44,7 @@ const SingleProductDetails = ({ product }: { product: TProduct }) => {
       <div className="flex justify-between items-center flex-wrap  gap-5">
         <div className="flex items-center">
           <button
-            disabled={quantity === 0}
+            disabled={quantity === 1}
             onClick={() => setQuantity(quantity - 1)}
             className="px-4 h-12 border-l border-t border-b rounded-l"
           >
@@ -48,7 +61,7 @@ const SingleProductDetails = ({ product }: { product: TProduct }) => {
           </button>
         </div>
         <div className="flex gap-5">
-          <button className="px-6 h-12 bg-gradient-to-t bg-[#17273B] from-[#105CAA] text-white flex justify-center items-center gap-2 rounded hover:bg-gradient-to-t hover:bg-[#105CAA] hover:from-[#193558] transition-all duration-500">
+          <button onClick={handleDispatch} className="px-6 h-12 bg-gradient-to-t bg-[#17273B] from-[#105CAA] text-white flex justify-center items-center gap-2 rounded hover:bg-gradient-to-t hover:bg-[#105CAA] hover:from-[#193558] transition-all duration-500">
             <PiShoppingCartSimple className="w-6 h-6 " />
             Add to cart
           </button>

@@ -8,9 +8,22 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { IoSearch } from "react-icons/io5";
 import { useState } from "react";
 import { TProduct } from "@/types";
+import { useAppDispatch } from "@/redux/hook/hook";
+import { addToCart } from "@/redux/fetures/cart/cartSlice";
 
 const ProductCard = ({ product }: { product: TProduct }) => {
   const [hovered, setHovered] = useState(false);
+  const dispatch = useAppDispatch();
+  const handleDispatch = () => {
+    dispatch(
+      addToCart({
+        id: product._id,
+        title: product.title,
+        image: product.images[0],
+        price: product.price,
+      })
+    );
+  };
 
   return (
     <div className="px-1.5">
@@ -51,7 +64,10 @@ const ProductCard = ({ product }: { product: TProduct }) => {
           </h1>
           <Rating readOnly style={{ maxWidth: 80 }} value={product.rating} />
           <div className="flex justify-center items-center">
-            <button className="px-6 py-2 mt-5 border rounded-full text-sm bg-gray-200 hover:bg-[#105CAA] hover:text-white flex items-center gap-1 transition-all duration-300">
+            <button
+              onClick={handleDispatch}
+              className="px-6 py-2 mt-5 border rounded-full text-sm bg-gray-200 hover:bg-[#105CAA] hover:text-white flex items-center gap-1 transition-all duration-300"
+            >
               <FaBagShopping /> ADD TO CART
             </button>
           </div>

@@ -8,19 +8,19 @@ import { TUser } from '../user/user.interface';
 
 const register = async (payload: TUser) => {
   const { fullName, email, password } = payload;
-  //check if user already exist in database
+  // Check if user already exists in the database
   const user = await User.findOne({ email: email });
   if (user) {
     throw new AppError(httpStatus.BAD_REQUEST, 'User already exists');
   }
   const hashedPassword = await bcrypt.hash(password as string, 12);
-  //if user not exist in database for create new user
+  // Create a new user if they do not exist in the database
   const newUser = await User.create({
     fullName,
     email,
     password: hashedPassword,
   });
-  //create jwt token for user
+  // Create JWT token for the user
   const jwtPayload = {
     userId: newUser._id,
     fullName: newUser.fullName,
@@ -50,7 +50,7 @@ const login = async (email: string, password: string) => {
   if (!isPasswordCorrect) {
     throw new AppError(httpStatus.BAD_REQUEST, 'Invalid password');
   }
-  //create jwt token for user
+  // Create JWT token for the user
   const jwtPayload = {
     userId: user._id,
     fullName: user.fullName,
@@ -67,6 +67,7 @@ const login = async (email: string, password: string) => {
     accessToken,
   };
 };
+
 export const authService = {
   register,
   login,

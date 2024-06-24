@@ -17,7 +17,7 @@ const ProductDetails = async ({ params }: { params: any }) => {
   );
   const { data: product } = await res.json();
 
-  const currentPath = `/products/${product?.title}`;
+  const currentPath = `/products/${product?.product?.title}`;
   return (
     <>
       <Container className="p-3 space-y-2">
@@ -31,14 +31,14 @@ const ProductDetails = async ({ params }: { params: any }) => {
         </div>
         <div className="w-full grid grid-cols-1 md:grid-cols-12 gap-3 ">
           <div className="col-span-full md:col-span-9  grid grid-cols-1 md:grid-cols-2 bg-white p-3 gap-5">
-            <ProductImgSlider images={product.images} />
-            <SingleProductDetails product={product} />
+            <ProductImgSlider images={product.product.images} />
+            <SingleProductDetails product={product.product} />
           </div>
           <div className="col-span-full md:col-span-3 ">
             <RelatedProducts />
           </div>
         </div>
-        <ProductAllInfo product={product} />
+        <ProductAllInfo product={product.product} />
       </Container>
     </>
   );

@@ -10,17 +10,21 @@ import { loginUser } from "@/action/auth/loginUser";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { setToLocalStorage } from "@/utils/localStorage/localStorage";
+import { FcGoogle } from "react-icons/fc";
+import { signIn } from "next-auth/react";
+import { FaGithub } from "react-icons/fa";
 const Login = () => {
   const router = useRouter();
   const submit = async (data: FieldValues) => {
     const result = await loginUser(data);
+    console.log(result)
     if (!result?.success) {
       toast.error(result?.message);
     }
     if (result?.success && result?.data) {
       setToLocalStorage("accessToken", result?.data?.accessToken);
       toast.success(result?.message);
-      router.push("/my-account");
+      router.push("/");
     }
   };
   return (
