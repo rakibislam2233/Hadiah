@@ -1,5 +1,5 @@
 import ProductCard from "../ProductCard";
-import flashSaleImage from "@/assest/Banner/flashsale.jpg";
+import flashSaleImage from '@/assest/Banner/flashSale.jpg'
 import Carasoul from "@/components/Shared/Carasoul/Carasoul";
 import { TProduct } from "@/types";
 
